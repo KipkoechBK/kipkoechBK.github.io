@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Certificates Portfolio</title>
     <style>
         body {
@@ -19,10 +21,15 @@
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
         }
+        #certificates-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
         .certificate {
-            margin: 20px 0;
-            padding: 20px;
+            flex: 1 1 300px;
             background: white;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -34,10 +41,14 @@
         h2 {
             color: #3498db;
             margin-top: 0;
+            font-size: 1.2em;
         }
-        p {
-            margin: 10px 0;
+        .issuer, .date {
+            margin: 5px 0;
             color: #555;
+        }
+        .date {
+            font-style: italic;
         }
         a {
             display: inline-block;
@@ -48,97 +59,52 @@
             text-decoration: none;
             margin-top: 10px;
             font-weight: bold;
+            font-size: 0.9em;
         }
         a:hover {
             background: #2980b9;
-        }
-        .date {
-            font-style: italic;
-            color: #777;
         }
     </style>
 </head>
 <body>
     <h1>My Professional Certificates Portfolio</h1>
-    
-    <!-- Digital Skills -->
-    <div class="certificate">
-        <h2>Digital Skills for a Brighter Future</h2>
-        <p>Issued by: BrighterMonday Kenya</p>
-        <p class="date">May 2025</p>
-        <a href="Brian Kibet_Certificate_DigitalSkillsforaBrighterFuture.pdf" target="_blank">View Certificate</a>
+    <div id="certificates-container">
+        <!-- Certificates will be loaded here by JavaScript -->
     </div>
 
-    <!-- Soft Skills -->
-    <div class="certificate">
-        <h2>Soft Skills for Career Success</h2>
-        <p>Issued by: BrighterMonday Kenya</p>
-        <p class="date">May 2025</p>
-        <a href="Brian Kibet_Certificate_SoftSkillsforCareerSuccess.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- Computer Hardware -->
-    <div class="certificate">
-        <h2>Computer Hardware Basics</h2>
-        <p>Issued by: Cisco Networking Academy</p>
-        <p class="date">September 2024</p>
-        <a href="Brian Kipkoech_Computer hardware basics cert.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- Fusion 360 -->
-    <div class="certificate">
-        <h2>Fusion 360 Essentials</h2>
-        <p>Issued by: Source CAD</p>
-        <p class="date">September 2024</p>
-        <a href="Brian Kipkoech_Fusion 360 essentials cert.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- Cybersecurity -->
-    <div class="certificate">
-        <h2>Introduction to Cybersecurity</h2>
-        <p>Issued by: Cisco Networking Academy</p>
-        <p class="date">November 2024</p>
-        <a href="Brian Kipkoech_Introduction to cybersecurity cert.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- AutoCAD -->
-    <div class="certificate">
-        <h2>AutoCAD Essentials</h2>
-        <p>Issued by: Source CAD</p>
-        <p class="date">September 2024</p>
-        <a href="Brian Kipkoech_autocad essentials cert.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- i2B Innovation -->
-    <div class="certificate">
-        <h2>DeKUT i2B Innovation Weekend</h2>
-        <p>Issued by: Dedan Kimathi University</p>
-        <p class="date">May 2025</p>
-        <a href="Brian Kipkoech_i2BInnovationweekend,Dekut.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- IEK Katiba -->
-    <div class="certificate">
-        <h2>IEK Katiba Review Webinar</h2>
-        <p>Issued by: Institution of Engineers of Kenya</p>
-        <p class="date">September 2024</p>
-        <a href="Brian kipkoech_IEK_katibaCert.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- Cybersecurity Awareness -->
-    <div class="certificate">
-        <h2>Cybersecurity and Emerging Technologies</h2>
-        <p>Issued by: ICT Authority, Kenya</p>
-        <p class="date">May 2024</p>
-        <a href="Brian-Kipkoech-Cybersecurity-and-Emerging-Technologies-Awareness-Training-Capabuil-Certificate-Digital-Skills-Training.pdf" target="_blank">View Certificate</a>
-    </div>
-
-    <!-- Computer Hardware Badge -->
-    <div class="certificate">
-        <h2>Computer Hardware Basics Badge</h2>
-        <p>Issued by: Cisco Networking Academy</p>
-        <p class="date">September 2024</p>
-        <a href="Computer_Hardware_Basics_Badge20240916-7-rp4xba.pdf" target="_blank">View Certificate</a>
-    </div>
+    <script>
+        // Fetch certificates from JSON and display them
+        fetch('certificates.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load certificates');
+                }
+                return response.json();
+            })
+            .then(certificates => {
+                const container = document.getElementById('certificates-container');
+                
+                // Sort by date (newest first)
+                certificates.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                // Generate HTML for each certificate
+                certificates.forEach(cert => {
+                    const certElement = document.createElement('div');
+                    certElement.className = 'certificate';
+                    certElement.innerHTML = `
+                        <h2>${cert.title}</h2>
+                        <p class="issuer">Issued by: ${cert.issuer}</p>
+                        <p class="date">${cert.date}</p>
+                        <a href="${cert.file}" target="_blank">View Certificate</a>
+                    `;
+                    container.appendChild(certElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('certificates-container').innerHTML = 
+                    '<p>Unable to load certificates. Please try again later.</p>';
+            });
+    </script>
 </body>
 </html>
