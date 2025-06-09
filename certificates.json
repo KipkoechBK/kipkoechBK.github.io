@@ -2,15 +2,80 @@
   "certificates": [
     {
       "title": "Mater Heart Run Participation",
-      "issuer": "Dedan Kimathi University",
+      "issuer": "Dedan Kimathi University of Technology",
       "date": "May 2025",
-      "file": "certificates/mater-heart-run.pdf"
+      "file": "certificates/Brian_Kipkoech_Mater_Heart_Run_2025.pdf",
+      "categories": ["charity"]
     },
     {
-      "title": "Cybersecurity Fundamentals",
-      "issuer": "Cisco",
-      "date": "November 2024", 
-      "file": "certificates/cybersecurity.pdf"
+      "title": "Cybersecurity & Emerging Technologies",
+      "issuer": "ICT Authority, Kenya",
+      "date": "May 2024",
+      "file": "certificates/Brian-Kipkoech-Cybersecurity-Certificate.pdf",
+      "categories": ["technical", "cybersecurity"]
+    },
+    {
+      "title": "AutoCAD Essentials",
+      "issuer": "Source CAD",
+      "date": "September 2024",
+      "file": "certificates/Brian_Kipkoech_autocad_essentials_cert.pdf",
+      "categories": ["technical", "cad"]
+    },
+    {
+      "title": "Fusion 360 Essentials",
+      "issuer": "Source CAD",
+      "date": "September 2024",
+      "file": "certificates/Brian_Kipkoech_Fusion_360_essentials_cert.pdf",
+      "categories": ["technical", "cad"]
+    },
+    {
+      "title": "Computer Hardware Basics",
+      "issuer": "Cisco Networking Academy",
+      "date": "September 2024",
+      "file": "certificates/Brian_Kipkoech_Computer_hardware_basics_cert.pdf",
+      "categories": ["technical", "hardware"]
+    },
+    {
+      "title": "Introduction to Cybersecurity",
+      "issuer": "Cisco Networking Academy",
+      "date": "November 2024",
+      "file": "certificates/Brian_Kipkoech_Introduction_to_cybersecurity_cert.pdf",
+      "categories": ["technical", "cybersecurity"]
+    },
+    {
+      "title": "Digital Skills for a Brighter Future",
+      "issuer": "BrighterMonday Kenya",
+      "date": "May 2025",
+      "file": "certificates/Brian_Kibet_Certificate_DigitalSkillsforaBrighterFuture.pdf",
+      "categories": ["professional"]
+    },
+    {
+      "title": "Soft Skills for Career Success",
+      "issuer": "BrighterMonday Kenya",
+      "date": "May 2025",
+      "file": "certificates/Brian_Kibet_Certificate_SoftSkillsforCareerSuccess.pdf",
+      "categories": ["professional"]
+    },
+    {
+      "title": "IEK Katiba Review Webinar",
+      "issuer": "Institution of Engineers of Kenya",
+      "date": "September 2024",
+      "file": "certificates/Brian_kipkoech_IEK_katibaCert.pdf",
+      "categories": ["professional"]
+    },
+    {
+      "title": "DeKUT i2B Innovation Weekend",
+      "issuer": "Dedan Kimathi University",
+      "date": "May 2025",
+      "file": "certificates/Brian_Kipkoech_i2BInnovationweekend_Dekut.pdf",
+      "categories": ["innovation"]
+    },
+    {
+      "title": "Computer Hardware Basics Badge",
+      "issuer": "Cisco Networking Academy",
+      "date": "September 2024",
+      "file": "certificates/Computer_Hardware_Basics_Badge20240916.pdf",
+      "categories": ["technical", "hardware"]
     }
   ]
 }
