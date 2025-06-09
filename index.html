@@ -1,107 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Certificates Portfolio</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 25px;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .certificate {
-            margin: 20px 0;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .certificate:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #3498db;
-            margin-top: 0;
-        }
-        p {
-            margin: 10px 0;
-            color: #555;
-        }
-        a {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        a:hover {
-            background: #2980b9;
-        }
-        .date {
-            font-style: italic;
-            color: #777;
-        }
-        #loading {
-            text-align: center;
-            font-style: italic;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>My Professional Certificates Portfolio</h1>
-    <div id="certificates-container">
-        <p id="loading">Loading certificates...</p>
-    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('certificates-container');
+    
+    // Show loading state
+    container.innerHTML = '<p id="loading">Loading certificates...</p>';
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('certificates.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const container = document.getElementById('certificates-container');
-                    container.innerHTML = ''; // Clear loading message
-                    
-                    data.certificates.forEach(cert => {
-                        const certHTML = `
-                            <div class="certificate">
-                                <h2>${cert.title}</h2>
-                                <p>Issued by: ${cert.issuer}</p>
-                                <p class="date">${cert.date}</p>
-                                <a href="${cert.file}" target="_blank">View Certificate</a>
-                            </div>
-                        `;
-                        container.innerHTML += certHTML;
-                    });
-                })
-                .catch(error => {
-                    console.error('Error loading certificates:', error);
-                    document.getElementById('certificates-container').innerHTML = 
-                        '<p>Error loading certificates. Please try again later.</p>';
-                });
+    fetch('certificates.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!data.certificates || !Array.isArray(data.certificates)) {
+                throw new Error('Invalid JSON structure');
+            }
+
+            container.innerHTML = '';
+            
+            data.certificates.forEach(cert => {
+                if (!cert.title || !cert.issuer) {
+                    console.warn('Incomplete certificate:', cert);
+                    return;
+                }
+                
+                const certHTML = `
+                    <div class="certificate">
+                        <h2>${cert.title}</h2>
+                        <p>Issued by: ${cert.issuer}</p>
+                        ${cert.date ? `<p class="date">${cert.date}</p>` : ''}
+                        <a href="${cert.file || '#'}" target="_blank">View Certificate</a>
+                    </div>
+                `;
+                container.innerHTML += certHTML;
+            });
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            container.innerHTML = `
+                <div class="error">
+                    <p>⚠️ Error loading certificates</p>
+                    <small>${error.message}</small>
+                    <p>Please check:</p>
+                    <ul>
+                        <li>certificates.json exists</li>
+                        <li>JSON format is valid</li>
+                    </ul>
+                </div>
+            `;
         });
-    </script>
-</body>
-</html>
+});
+</script>
