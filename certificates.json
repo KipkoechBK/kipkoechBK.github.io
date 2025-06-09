@@ -17,5 +17,15 @@
     "date": "September 2024",
     "file": "Brian Kipkoech_Computer hardware basics cert.pdf"
   }
-  // Add more certificates here
+  {
+  "certificates": [
+    {
+      "title": "Mater Heart Run Participation",
+      "date": "2025-05-31",
+      "issuer": "Dedan Kimathi University of Technology",
+      "file": "Brian_Kipkoech_Mater_Heart_Run_2025.pdf"
+    }
+  ]
+}
+  //add more certificates
 ]
