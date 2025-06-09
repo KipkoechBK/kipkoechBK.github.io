@@ -1,31 +1,23 @@
-[
-  {
-    "title": "Digital Skills for a Brighter Future",
-    "issuer": "BrighterMonday Kenya",
-    "date": "May 2025",
-    "file": "Brian Kibet_Certificate_DigitalSkillsforaBrighterFuture.pdf"
-  },
-  {
-    "title": "Soft Skills for Career Success",
-    "issuer": "BrighterMonday Kenya",
-    "date": "May 2025",
-    "file": "Brian Kibet_Certificate_SoftSkillsforCareerSuccess.pdf"
-  },
-  {
-    "title": "Computer Hardware Basics",
-    "issuer": "Cisco Networking Academy",
-    "date": "September 2024",
-    "file": "Brian Kipkoech_Computer hardware basics cert.pdf"
-  }
-  {
+{
   "certificates": [
     {
+      "title": "Digital Skills for a Brighter Future",
+      "issuer": "BrighterMonday Kenya",
+      "date": "May 2025",
+      "file": "Brian Kibet_Certificate_DigitalSkillsforaBrighterFuture.pdf"
+    },
+    {
+      "title": "Soft Skills for Career Success",
+      "issuer": "BrighterMonday Kenya",
+      "date": "May 2025",
+      "file": "Brian Kibet_Certificate_SoftSkillsforCareerSuccess.pdf"
+    },
+    {
       "title": "Mater Heart Run Participation",
-      "date": "2025-05-31",
       "issuer": "Dedan Kimathi University of Technology",
+      "date": "May 2025", 
       "file": "Brian_Kipkoech_Mater_Heart_Run_2025.pdf"
-    }
+    },
+    // ... (keep all your other certificates here)
   ]
 }
-  //add more certificates
-]
